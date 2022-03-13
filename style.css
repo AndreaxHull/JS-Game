@@ -1,0 +1,44 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-size: 7.5vmin;
+}
+#game-backdrop {
+  /* variables */
+  --grid-size: 5;
+  --tile-size: 15vmin;
+  --tile-gap: 2vmin;
+  --border-radius: 2vmin;
+
+  /* colours */
+  background-color: rgb(14, 151, 151);
+
+  /* grid */
+  display: grid;
+  grid-template-rows: repeat(var(--grid-size), var(--tile-size));
+  grid-template-columns: repeat(var(--grid-size), var(--tile-size));
+  gap: var(--tile-gap);
+  border-radius: var(--border-radius);
+  padding: 2vmin;
+  position: relative;
+  /* for moving tiles, makes tiles position absolute, and than relatively position them */
+}
+.tile {
+  background-color: black;
+  border-radius: var(--border-radius);
+}
+.value {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+}
