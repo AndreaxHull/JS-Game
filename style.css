@@ -1,9 +1,13 @@
+/* .tile to create a div class called tile */
+/* #tile to create an id class called tile */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* page */
 body {
   background-color: aqua;
   display: flex;
@@ -13,6 +17,8 @@ body {
   margin: 0;
   font-size: 7.5vmin;
 }
+
+/* game layout */
 #game-backdrop {
   /* variables */
   --grid-size: 5;
@@ -33,12 +39,29 @@ body {
   position: relative;
   /* for moving tiles, makes tiles position absolute, and than relatively position them */
 }
+
+/* tile layout */
 .tile {
   background-color: black;
   border-radius: var(--border-radius);
 }
+
+/* putting values into the game and changing location */
 .value {
+  /* coordinates, x and y for positioning */
+  /* if you change the x and y poition the tile will automatically go to that spot */
+  --x: 0;
+  --y: 0;
+  /* positioning, absolute stops the value from changing the game layout */
   position: absolute;
   display: flex;
   justify-content: center;
+  align-items: center;
+  width: var(--tile-size);
+  height: var(--tile-size);
+  background-color: brown;
+  border-radius: var(--border-radius);
+  /* positioning the x and y coordinates */
+  top: calc(var(--y) * (var(--tile-size) + var(--tile-gap)) + var(--tile-gap));
+  left: calc(var(--x) * (var(--tile-size) + var(--tile-gap)) + var(--tile-gap));
 }
