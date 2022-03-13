@@ -48,6 +48,14 @@ body {
 
 /* putting values into the game and changing location */
 .value {
+  /* HSL to determine colour which helps player know their progress and 
+  difficulty within the game  */
+  --tile-hue: 200;
+  --tile-saturation: 50%;
+  --tile-lightness: 80%;
+  --value-hue: 200;
+  --value-saturation: 25%;
+  --value-lightness: 20%;
   /* coordinates, x and y for positioning */
   /* if you change the x and y poition the tile will automatically go to that spot */
   --x: 0;
@@ -59,9 +67,26 @@ body {
   align-items: center;
   width: var(--tile-size);
   height: var(--tile-size);
-  background-color: brown;
   border-radius: var(--border-radius);
   /* positioning the x and y coordinates */
   top: calc(var(--y) * (var(--tile-size) + var(--tile-gap)) + var(--tile-gap));
   left: calc(var(--x) * (var(--tile-size) + var(--tile-gap)) + var(--tile-gap));
+  /* HSL, hue, saturation and lightness */
+  background-color: HSL(
+    var(--tile-hue),
+    var(--tile-saturation),
+    var(--tile-lightness)
+  );
+  color: HSL(var(--value-hue), var(--value-saturation), var(--value-lightness));
+  /* animation */
+  animation: show 200ms ease-in-out;
+  /* transition for when moving tiles */
+  transition: 200ms ease-in-out;
+}
+/* animation */
+@keyframes show {
+  10% {
+    opacity: 0.5;
+    transform: scale(0);
+  }
 }
